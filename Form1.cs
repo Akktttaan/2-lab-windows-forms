@@ -48,19 +48,6 @@ namespace _2_lab_wpf
             SiftUp(i, ref queue);
             ExtractMax(ref queue);
         }
-        static void ChangePriority(int i, int priority, ref KeyValuePair<int, string>[] queue)
-        {
-            int oldPriority = i;
-            queue[i] = new KeyValuePair<int, string>(priority, queue[i].Value);
-            if (priority > oldPriority)
-            {
-                SiftUp(i, ref queue);
-            }
-            else
-            {
-                SiftDown(i, ref queue);
-            }
-        }
         static void SiftUp(int i, ref KeyValuePair<int, string>[] queue)
         {
             while (i > 0 && queue[Parentt(i)].Key < queue[i].Key)
@@ -156,19 +143,11 @@ namespace _2_lab_wpf
             }
             
         }
+        
 
-        private void button5_Click(object sender, EventArgs e)
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            if (!(listBox1.SelectedItem is null))
-            {
-                string[] subs = listBox1.SelectedItem.ToString().Split();
-                int indexChange = 0;
-                for (int i = 0; i < queueWithPriority.Length; i++)
-                {
-                    if (queueWithPriority[i].Value == subs[0]) indexRemove = i;
-                }
-                ChangePriority(indexChange, queueWithPriority);
-            }
+
         }
     }
 }
